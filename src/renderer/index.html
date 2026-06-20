@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tonicue 瞳休</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main id="main-view" class="shell">
+      <section class="hero-panel">
+        <div class="mascot" aria-hidden="true">
+          <div class="mascot-face">
+            <span></span>
+            <span></span>
+          </div>
+          <div class="mascot-smile"></div>
+        </div>
+        <div>
+          <p class="eyebrow">Tonicue 瞳休</p>
+          <h1>今天也要温柔地离开屏幕几次</h1>
+          <p class="subtitle" id="next-reminder-text">正在准备你的下一次提醒...</p>
+        </div>
+        <div class="hero-actions">
+          <button class="secondary-action" id="test-reminder" type="button">测试提醒</button>
+          <button class="secondary-action" id="focus-pause" type="button">专注 30 分钟</button>
+          <button class="primary-action" id="timer-toggle" type="button">暂停提醒</button>
+        </div>
+      </section>
+
+      <section id="onboarding-card" class="onboarding-card hidden">
+        <div>
+          <p class="eyebrow">First run</p>
+          <h2>瞳休会安静待在托盘里</h2>
+          <p>关闭主窗口不会退出应用；它会继续在后台记录活跃盯屏时间，到点从右下角弹出小提醒。</p>
+        </div>
+        <button id="dismiss-onboarding" class="secondary-action" type="button">知道啦</button>
+      </section>
+
+      <section class="dashboard">
+        <article class="focus-card">
+          <div class="card-head">
+            <span>连续盯屏</span>
+            <strong id="running-label">后台运行中</strong>
+          </div>
+          <div class="big-time" id="current-session">00:00:00</div>
+          <div class="soft-progress">
+            <div id="session-progress"></div>
+          </div>
+          <p id="session-copy">眼睛正在认真上班。</p>
+        </article>
+
+        <article class="stats-grid">
+          <div class="stat-card mint">
+            <span>今日累计</span>
+            <strong id="total-screen">00:00:00</strong>
+          </div>
+          <div class="stat-card peach">
+            <span>最长连续</span>
+            <strong id="longest-session">00:00:00</strong>
+          </div>
+          <div class="stat-card blue">
+            <span>完成休息</span>
+            <strong id="completed-breaks">0 次</strong>
+          </div>
+          <div class="stat-card lilac">
+            <span>稍后提醒</span>
+            <strong id="snoozed-breaks">0 次</strong>
+          </div>
+          <div class="stat-card mint">
+            <span>今日节奏</span>
+            <strong id="rhythm-score">刚开始</strong>
+          </div>
+          <div class="stat-card peach">
+            <span>保护动作</span>
+            <strong id="protection-summary">0 次</strong>
+          </div>
+        </article>
+      </section>
+
+      <section class="settings-panel">
+        <div class="section-title">
+        <div>
+          <p class="eyebrow">Reminders</p>
+          <h2>提醒小队</h2>
+        </div>
+        <div class="setting-switches">
+          <label class="switch-row compact">
+            <input id="sound-toggle" type="checkbox" />
+            <span></span>
+            提醒声音
+          </label>
+          <label class="switch-row compact">
+            <input id="startup-toggle" type="checkbox" />
+            <span></span>
+            <b id="startup-label">开机自启</b>
+          </label>
+        </div>
+      </div>
+        <div class="reminder-list" id="reminder-list"></div>
+      </section>
+    </main>
+
+    <main id="reminder-view" class="reminder-shell hidden">
+      <section class="pop-card">
+        <button id="close-reminder" class="icon-button" type="button" aria-label="关闭">x</button>
+        <div class="pop-mascot" id="pop-mascot">o_o</div>
+        <p class="eyebrow">小提醒到啦</p>
+        <h1 id="reminder-title">该休息一下了</h1>
+        <p id="reminder-message">眼睛想离开屏幕一小会儿。</p>
+        <div id="exercise-guide" class="exercise-guide"></div>
+        <div id="rest-timer" class="rest-timer hidden">
+          <span>远眺倒计时</span>
+          <strong id="rest-countdown">20</strong>
+        </div>
+        <div class="mini-stat">
+          <span>当前连续盯屏</span>
+          <strong id="reminder-session">00:00:00</strong>
+        </div>
+        <div class="reminder-actions">
+          <button id="complete-reminder" class="primary-action" type="button">完成啦</button>
+          <button id="snooze-one-reminder" class="secondary-action" type="button">1 分钟后</button>
+          <button id="snooze-reminder" class="secondary-action" type="button">5 分钟后</button>
+          <button id="skip-reminder" class="ghost-action" type="button">今天先不提醒</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

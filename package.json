@@ -1,0 +1,54 @@
+{
+  "name": "tonicue",
+  "version": "0.1.5",
+  "description": "A cute desktop break reminder for screen-heavy work.",
+  "main": "src/main/main.js",
+  "author": "Tonicue",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "test": "node --test",
+    "build:win": "electron-builder --win nsis --x64",
+    "build:mac": "electron-builder --mac dmg zip",
+    "build:all": "electron-builder --mac dmg zip --win nsis --x64",
+    "lint": "node scripts/check.js"
+  },
+  "build": {
+    "appId": "com.tonicue.app",
+    "productName": "Tonicue 瞳休",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "src/assets/icon.icns",
+      "category": "public.app-category.productivity",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3"
+  }
+}
